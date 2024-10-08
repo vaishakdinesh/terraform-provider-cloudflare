@@ -132,7 +132,7 @@ func (r *AccessRuleResource) Update(ctx context.Context, req resource.UpdateRequ
 
 	_, err = r.client.Firewall.AccessRules.Edit(
 		ctx,
-		data.Identifier.ValueString(),
+		data.ID.ValueString(),
 		params,
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
@@ -174,7 +174,7 @@ func (r *AccessRuleResource) Read(ctx context.Context, req resource.ReadRequest,
 
 	_, err := r.client.Firewall.AccessRules.Get(
 		ctx,
-		data.Identifier.ValueString(),
+		data.ID.ValueString(),
 		params,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -213,7 +213,7 @@ func (r *AccessRuleResource) Delete(ctx context.Context, req resource.DeleteRequ
 
 	_, err := r.client.Firewall.AccessRules.Delete(
 		ctx,
-		data.Identifier.ValueString(),
+		data.ID.ValueString(),
 		params,
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)

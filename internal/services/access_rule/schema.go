@@ -23,11 +23,6 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Optional:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
-			"identifier": schema.StringAttribute{
-				Description:   "The unique identifier of the resource.",
-				Optional:      true,
-				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
-			},
 			"zone_id": schema.StringAttribute{
 				Description:   "The Zone ID to use for this endpoint. Mutually exclusive with the Account ID.",
 				Optional:      true,
@@ -74,8 +69,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Optional:    true,
 			},
 			"id": schema.StringAttribute{
-				Description: "Identifier",
-				Computed:    true,
+				Description:   "Identifier",
+				Computed:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 		},
 	}
